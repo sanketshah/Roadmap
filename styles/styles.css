@@ -1,0 +1,53 @@
+﻿body 
+{
+    padding:10px;
+    text-align:center;
+}
+
+table
+{
+	background: rgb(88%,88%,88%);
+	font: 1em/1 Cochin, Georgia, serif;
+    border-collapse:collapse;
+}
+
+.topline
+{
+    border-collapse:collapse;
+    width:100px;
+    height:35px;
+    border-right: 1px dotted #CCC;
+    border-left: 1px dotted #CCC;
+	background: url(../pieces/line.png) center repeat-x;
+	font-size:75%;
+}
+
+.botline
+{
+    border-collapse:collapse;
+    width:100px;
+    height:35px;
+    border-right: 1px dotted #CCC;
+    border-left: 1px dotted #CCC;
+    border-bottom: 1px dotted #CCC;
+	font-size:75%;
+	vertical-align:top;
+}
+
+.healine,
+.lefline
+{
+    border-collapse:collapse;
+    width:100px;
+    border-right: 1px dotted #CCC;
+    border-left: 1px dotted #CCC;
+    border-bottom: 1px dotted #CCC;
+}
+
+.circle {
+display: block;
+width: 10px;
+height: 10px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+}

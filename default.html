@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Project Roadmap</title>
+<link href="styles/styles.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    function toggle(showHideDiv, switchTextDiv) {
+	    var ele = document.getElementById(showHideDiv);
+	    var text = document.getElementById(switchTextDiv);
+	    if(ele.style.display == "block") {
+	        ele.style.display = "none";
+            //text.innerHTML = "show";
+  	    }
+	    else {
+		    ele.style.display = "block";
+		    ele.innerHTML = switchTextDiv;
+		    //text.innerHTML = "hide";
+	    }
+    } 
+</script>
+</head>
+<body>
+<div id="chart_div" style="width: 400px; height: 300px; float: left;"></div>
+<div id="bar_div" style="width: 400px; height: 300px; float: left;"></div>
+<div style="clear:both;">
+<table>
+<thead>
+<tr>
+<th class="healine"><p>Project</p></th>
+<th class="healine"><p>Jan</p></th>
+<th class="healine"><p>Feb</p></th>
+<th class="healine"><p>Mar</p></th>
+<th class="healine"><p>Apr</p></th>
+<th class="healine"><p>May</p></th>
+<th class="healine"><p>Jun</p></th>
+<th class="healine"><p>Jul</p></th>
+<th class="healine"><p>Aug</p></th>
+<th class="healine"><p>Sep</p></th>
+<th class="healine"><p>Oct</p></th>
+<th class="healine"><p>Nov</p></th>
+<th class="healine"><p>Dec</p></th>
+</tr>
+</thead>
+
+<tbody>
+<TR><TD class="lefline" rowspan=2>Project Sample</TD><TD class="topline"><p class="circle" style="background:green; position:relative; left:0%"></p></TD><TD class="topline"><p class="circle" style="background:blue; position:relative; left:20%;"></p></TD><TD class="topline"><p class="circle" style="background:orange; position:relative; left:40%;"></p></TD><td class="topline"><p class="circle" style="background:black; position:relative; left:100%;"></p></td><td class="topline"></td><td class="topline"></td><td class="topline"></td><td class="topline"></td><td class="topline"><p class="circle" style="background:blue; position:relative; left:20%;"></p></td><td class="topline"></td><td class="topline"><p class="circle" style="background:red; position:relative; left:60%;"></p></td><td class="topline"><p class="circle" style="background:gray; position:relative; left:80%;"></p></td></tr>
+<TR>                                            <TD class="botline">Code completion (01/07 - 75%)</TD><TD class="botline">UAT Sign Off (02/14 - 00%)</TD><TD class="botline">Go Live (03/30 - 00%)</TD><TD class="botline"></TD><TD class="botline"></TD><TD class="botline"></TD><TD class="botline"></TD><TD class="botline"></TD><TD class="botline">Project Closure (09/15 - 00%)</TD><TD class="botline"></TD><TD class="botline"></TD><TD class="botline"></TD></TR>
+
+<script type="text/javascript">
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.open("GET", "data/projects.xml", false);
+    xmlhttp.send();
+    xmlDoc = xmlhttp.responseXML;
+
+    var x = xmlDoc.getElementsByTagName("CD");
+    var y = xmlDoc.getElementsByTagName("CD");
+    var project_name = "Some Project";
+    var td_str = "";
+    var tr_str = "";
+    var td_col = 0;
+    var td_back = "";
+
+    // reserved for later use of dot positioning
+    var td_per = 0;
+
+    // Loop for every Project
+    for (i = 0; i < x.length; i++) {
+
+        //Enter loop only for same project
+        if (x[i].getElementsByTagName("PROJECT")[0].childNodes[0].nodeValue != project_name) {
+
+            project_name = x[i].getElementsByTagName("PROJECT")[0].childNodes[0].nodeValue;
+            tr_str = "<tr>";
+            td_str = "<td class=\"lefline\" rowspan=2><div onmouseover=\"javascript:toggle('issues_div','"
+            td_str += x[i].getElementsByTagName("ISSUE")[0].childNodes[0].nodeValue;
+            td_str += "');\" onmouseout=\"javascript:toggle('issues_div','crazy');\">";
+            td_str += x[i].getElementsByTagName("PROJECT")[0].childNodes[0].nodeValue;
+            td_str += "</div>";
+            td_str += "</td>";
+
+            //window.alert(td_str);
+            document.write(tr_str);
+            document.write(td_str);
+
+            // For every column from 1 - 12; do it for top line
+            for (k = 1; k <= 12; k++) {
+
+                td_str = "<td class=\"topline\">";
+
+                // and for every project, check if project data is present
+                for (j = 0; j < y.length; j++) {
+
+                    if (x[i].getElementsByTagName("PROJECT")[0].childNodes[0].nodeValue == y[j].getElementsByTagName("PROJECT")[0].childNodes[0].nodeValue) {
+
+                        switch (y[j].getElementsByTagName("MONTH")[0].childNodes[0].nodeValue) {
+                            case "January":
+                                td_col = 1;
+                                td_per = 0;
+                                break;
+                            case "February":
+                                td_col = 2;
+                                td_per = 0;
+                                break;
+                            case "March":
+                                td_col = 3;
+                                td_per = 0;
+                                break;
+                            case "April":
+                                td_col = 4;
+                                td_per = 0;
+                                break;
+                            case "May":
+                                td_col = 5;
+                                td_per = 0;
+                                break;
+                            case "June":
+                                td_col = 6;
+                                td_per = 0;
+                                break;
+                            case "July":
+                                td_col = 7;
+                                td_per = 0;
+                                break;
+                            case "August":
+                                td_col = 8;
+                                td_per = 0;
+                                break;
+                            case "September":
+                                td_col = 9;
+                                td_per = 0;
+                                break;
+                            case "October":
+                                td_col = 10;
+                                td_per = 0;
+                                break;
+                            case "November":
+                                td_col = 11;
+                                td_per = 0;
+                                break;
+                            case "December":
+                                td_col = 12;
+                                td_per = 0;
+                                break;
+                            default:
+                                td_col = 1;
+                        }
+
+                        switch (y[j].getElementsByTagName("STATUS")[0].childNodes[0].nodeValue) {
+                            case "Blue":
+                                td_back = "blue";
+                                break;
+                            case "Red":
+                                td_back = "red";
+                                break;
+                            case "Green":
+                                td_back = "green";
+                                break;
+                            case "Orange":
+                                td_back = "orange";
+                                break;
+                            case "Gray":
+                                td_back = "gray";
+                                break;
+                            default:
+                                td_back = "green";
+                        }
+
+                        if (td_col == k) {
+                            td_str += "<div class=\"circle\" style=\"position:relative; left:";
+                            td_str += (td_col - 1) * 100 / 11;
+                            td_str += "%; background:";
+                            td_str += td_back;
+                            td_str += ";\"";
+                            td_str += " onmouseover=\"javascript:toggle('issues_div','Hi');\" onmouseout=\"javascript:toggle('issues_div','crazy');\">";
+                            td_str += "</div>";
+                        }
+                    }
+                }
+                td_str += "</td>";
+                document.write(td_str);
+            }
+            document.write("</tr>");
+
+            // For every column from 1 - 12; do it for bottom line
+            for (k = 1; k <= 12; k++) {
+
+                td_str = "<td class=\"botline\">";
+
+                // and for every project, check if project data is present
+                for (j = 0; j < y.length; j++) {
+
+                    if (x[i].getElementsByTagName("PROJECT")[0].childNodes[0].nodeValue == y[j].getElementsByTagName("PROJECT")[0].childNodes[0].nodeValue) {
+
+                        switch (y[j].getElementsByTagName("MONTH")[0].childNodes[0].nodeValue) {
+                            case "January":
+                                td_col = 1;
+                                break;
+                            case "February":
+                                td_col = 2;
+                                break;
+                            case "March":
+                                td_col = 3;
+                                break;
+                            case "April":
+                                td_col = 4;
+                                break;
+                            case "May":
+                                td_col = 5;
+                                break;
+                            case "June":
+                                td_col = 6;
+                                break;
+                            case "July":
+                                td_col = 7;
+                                break;
+                            case "August":
+                                td_col = 8;
+                                break;
+                            case "September":
+                                td_col = 9;
+                                break;
+                            case "October":
+                                td_col = 10;
+                                break;
+                            case "November":
+                                td_col = 11;
+                                break;
+                            case "December":
+                                td_col = 12;
+                                break;
+                            default:
+                                td_col = 1;
+                        }
+
+                        if (td_col == k) {
+                            td_str += y[j].getElementsByTagName("WHAT")[0].childNodes[0].nodeValue;
+                        }
+                    }
+                }
+                td_str += "</td>";
+                document.write(td_str);
+            }
+            document.write("</tr>");
+        }
+    }
+
+    var abc = x[0].getElementsByTagName("PROJECT")[0].childNodes[0].nodeValue;
+    var myJSONtext = "[{ \"" + abc + "\": { \"v\": 50, \"f\": 10} }, { \"Project B\": { \"v\": 25, \"f\": 10}}, { \"Project C\": { \"v\": 25, \"f\": 30}}]";
+    var myObject = eval('(' + myJSONtext + ')');
+
+    // Load the Visualization API and the piechart package.
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(SuccessCallBack);
+
+    function SuccessCallBack(data) {
+        var jsonObj = [
+            { abc: { "v": 50.00, "f": "$75"} },
+            { "User2": { "v": 10.00, "f": "$10"} },
+            { "User3": { "v": 15.00, "f": "$20"} },
+            { "User4": { "v": 10.00, "f": "$20"} },
+            { "User5": { "v": 20.00, "f": "$40"}}];
+
+        drawChart(myObject);
+    }
+
+    function drawChart(json) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Projects');
+        data.addColumn('number', 'Count');
+        data.addColumn('number', 'Status');
+        data.addRows(json.length);
+        for (var j in json) {
+            for (var k in json[j]) {
+                data.setValue(parseInt(j), 0, k);
+                data.setValue(parseInt(j), 1, json[j][k].v);
+                data.setValue(parseInt(j), 2, json[j][k].f);
+            }
+        }
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, { width: 400, height: 300, is3D: true, title: 'Project Summary' });
+
+        var chart = new google.visualization.BarChart(document.getElementById('bar_div'));
+        chart.draw(data, { width: 400, height: 300, is3D: true, title: 'Project Summary' });
+    }
+</script>
+</tbody>
+</table>
+</div>
+<div id="issues_div" style="border:none; padding:15px; display:none; text-align:left;">Hello there!</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PORTFOLIO>
+	<CD>
+		<PROJECT>Project A</PROJECT>
+    <MONTH>February</MONTH>
+    <STATUS>Red</STATUS>
+    <WHAT>Code Complete</WHAT>
+    <ISSUE>We have issues with Project A!</ISSUE>
+  </CD>
+  <CD>
+    <PROJECT>Project A</PROJECT>
+    <MONTH>March</MONTH>
+    <STATUS>Orange</STATUS>
+    <WHAT><![CDATA[Go Live<br />(03/07 - 25%)]]></WHAT>
+  </CD>
+  <CD>
+    <PROJECT>Project A</PROJECT>
+    <MONTH>July</MONTH>
+    <STATUS>Green</STATUS>
+    <WHAT><![CDATA[Project Closure<br />(07/07 - 00%)]]></WHAT>
+  </CD>
+  <CD>
+    <PROJECT>Project B</PROJECT>
+    <MONTH>April</MONTH>
+    <STATUS>Blue</STATUS>
+    <WHAT><![CDATA[Testing Complete<br />(04/07 - 100%)]]></WHAT>
+    <ISSUE>We have issues with Project B!</ISSUE>
+  </CD>
+  <CD>
+    <PROJECT>Project B</PROJECT>
+    <MONTH>November</MONTH>
+    <STATUS>Green</STATUS>
+    <WHAT><![CDATA[Client Rollout<br />(11/07 - 00%)]]></WHAT>
+  </CD>
+  <CD>
+    <PROJECT>Project C</PROJECT>
+    <MONTH>May</MONTH>
+    <STATUS>Green</STATUS>
+    <WHAT><![CDATA[UAT Sign Off<br />(05/14 - 75%)]]></WHAT>
+    <ISSUE>We have issues with Project C!</ISSUE>
+  </CD>
+  <CD>
+    <PROJECT>Project C</PROJECT>
+    <MONTH>September</MONTH>
+    <STATUS>Green</STATUS>
+    <WHAT><![CDATA[Released to Production<br />(09/21 - 00%)]]></WHAT>
+  </CD>
+</PORTFOLIO>
